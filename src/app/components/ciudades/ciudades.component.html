@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center mt-4">
+    <div class="w-75">
+        <button class="btn btn-primary mb-4" (click)="abrirModal()">
+            Agregar ciudad
+        </button>
+        <div class="mb-5">
+            <table class="table table-bordered">
+              <thead class="table-primary">
+                <tr>
+                  <th>Id Ciudad</th>
+                  <th>Nombre Ciudad</th>
+                  <th>País</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ciudad of ciudades">
+                  <td>{{ ciudad.idCiudad }}</td>
+                  <td>{{ ciudad.nombreCiudad }}</td>
+                  <td>{{ ciudad.pais }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-warning"
+                      (click)="abrirModalEditar(ciudad)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-danger"
+                      (click)="abrirModalEliminar(ciudad)"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+
+<app-modal
+  #modal
+  (agregaCiduadrEvent) = "recieveCiudad($event)"
+  (eliminarCiudadEvent) = "recieveEliminar($event)"
+></app-modal>

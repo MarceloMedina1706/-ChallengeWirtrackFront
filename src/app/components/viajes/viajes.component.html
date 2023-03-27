@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center mt-4">
+  <div class="w-75">
+    <button class="btn btn-primary mb-4" (click)="abrirModal()">
+      Asignar viajes
+    </button>
+    <app-filtros
+      (tipoEvent)="filtroTipoVehi($event)"
+      (ciudadEvent)="filtroDestino($event)"
+      (fechaEvent)="filtroFecha($event)"
+    ></app-filtros>
+    <div class="mb-2" style="height: 400px; overflow: auto">
+      <table class="table table-bordered">
+        <thead class="table-primary">
+          <tr>
+            <th>Tipo Vehículo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Patente</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Fecha</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let viaje of viajesFiltrado">
+            <td>{{ viaje.vehiculo.tipoVehiculo }}</td>
+            <td>{{ viaje.vehiculo.modelo }}</td>
+            <td>{{ viaje.vehiculo.marca }}</td>
+            <td>{{ viaje.vehiculo.patente }}</td>
+            <td>{{ viaje.ciudadDesde }}</td>
+            <td>{{ viaje.ciudadHasta }}</td>
+            <td>{{ formatDateOnly(viaje.fechaSalida) }}</td>
+            <td class="text-center">
+              <button class="btn btn-warning" (click)="reprogramar(viaje)">
+                Reprogramar
+              </button>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger" (click)="onEliminar(viaje)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  #modal
+  (asignarViajeEvent)="receiveAsignar($event)"
+  (eliminarViajeEvent)="eliminarViaje($event)"
+  (reproViajeEvent)="reprogramar($event)"
+  (guardarViajeEvent)="guargarViaje()"
+></app-modal>

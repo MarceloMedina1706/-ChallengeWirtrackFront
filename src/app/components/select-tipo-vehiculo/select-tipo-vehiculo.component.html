@@ -1,0 +1,4 @@
+<select #select class="form-select shadow-none" (change)="onChangeSelect($event)">
+  <option value=""  selected *ngIf="!editar">Todos</option>
+    <option  *ngFor="let o of tipos" [value]="o.idTipoVehiculo" [selected]="o.idTipoVehiculo==selectValue">{{o.descripcion}}</option>
+  </select>

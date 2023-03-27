@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSave()">
+    <div class="container">
+      <div class="mb-3 row" *ngIf="!editar">
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Id Tipo Vehículo</label
+        >
+        <div class="col-8">
+          <input type="text" class="form-control" formControlName="idTipoVehiculo" />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Descripción</label
+        >
+        <div class="col-8">
+          <input type="text" class="form-control" formControlName="descripcion" />
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div *ngIf="spinner" class="d-flex justify-content-center">
+          <div class="spinner-border text-danger mt-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div *ngIf="!spinner" class="d-flex justify-content-center">
+          <input
+            type="button"
+            class=" btn btn-danger w-25 shadow-none me-2"
+            value="Cancelar"
+            (click)="cancelar()"
+          />
+          <input
+            type="submit"
+            class=" btn btn-primary w-25 shadow-none ms-2"
+            value="Enviar"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+  
+

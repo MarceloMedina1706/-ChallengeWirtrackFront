@@ -1,0 +1,29 @@
+<div *ngIf="show" class="backdrop" (click)="closeModal()" ></div>
+
+<div *ngIf="show" class="modal-ve">
+  <app-select-tipo-vehiculo (selectEvent)="recieveTipo($event)"></app-select-tipo-vehiculo>
+  <table class="table mt-3">
+    <thead>
+      <th>Id Vehículo</th>
+      <th>Tipo Vehículo</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Patente</th>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let vehiculo of vehiculosFilter"
+        class="item"
+        (click)="selectVehiculo(vehiculo)"
+      >
+        <td>{{ vehiculo.idVehiculo }}</td>
+        <td>{{ vehiculo.tipoVehiculo }}</td>
+        <td>{{ vehiculo.modelo }}</td>
+        <td>{{ vehiculo.marca }}</td>
+        <td>{{ vehiculo.patente }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

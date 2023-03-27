@@ -1,0 +1,75 @@
+<form [formGroup]="vehiculoForm" (ngSubmit)="onSave()">
+  <div class="container">
+    <div class="mb-3 row">
+      <label for="inputPassword" class="col-4 col-form-label text-end"
+        >Tipo de vehículo</label
+      >
+      <div class="col-8">
+        <app-select-tipo-vehiculo (selectEvent) = "selectTipoVehiculo($event)" [editar]="editar" [selectValue]="vehiculo.idTipoVehiculo"></app-select-tipo-vehiculo>
+        
+        <!-- <input
+          type="text"
+          class="form-control"
+          formControlName="tipoVehiculo"
+        /> -->
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="inputPassword" class="col-4 col-form-label text-end"
+        >Marca</label
+      >
+      <div class="col-8">
+        <input type="text" class="form-control" formControlName="marca" />
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label for="inputPassword" class="col-4 col-form-label text-end"
+        >Modelo</label
+      >
+      <div class="col-8">
+        <input type="text" class="form-control" formControlName="modelo" />
+      </div>
+    </div>
+    <div class="mb-5 row">
+      <label for="inputPassword" class="col-4 col-form-label text-end"
+        >Patente</label
+      >
+      <div class="col-8">
+        <input type="text" class="form-control" formControlName="patente" />
+      </div>
+    </div>
+
+    <!-- <div class="row">
+            <input class="form-control shadow-none" type="text" placeholder="Tipo de vehículo" formControlName="tipoVehiculo">
+        </div>
+        <div class="row">
+            <input class="form-control shadow-none" type="text" placeholder="Marca" formControlName="marca">
+        </div>
+        <div class="row">
+            <input class="form-control shadow-none" type="text" placeholder="Modelo" formControlName="modelo">
+        </div>
+        <div class="row">
+            <input class="form-control shadow-none" type="text" placeholder="Patente" formControlName="patente">
+        </div> -->
+    <div class="row mt-4">
+      <div *ngIf="spinner" class="d-flex justify-content-center">
+        <div class="spinner-border text-danger mt-1" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      <div *ngIf="!spinner" class="d-flex justify-content-center">
+        <input
+          type="button"
+          class=" btn btn-danger shadow-none me-2"
+          value="Cancelar"
+          (click)="cancelar()"
+        />
+        <input
+          type="submit"
+          class=" btn btn-primary shadow-none ms-2"
+          value="Enviar"
+        />
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,78 @@
+<form [formGroup]="viajeForm" (ngSubmit)="onSave()">
+    <div class="container">
+      <div class="mb-3 row">
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Vehículo</label
+        >
+        <div class="col-8">
+          <div class="d-flex justify-content-between">
+            <div class="item-v">
+              <p>Patente: </p><p><span style="font-weight: bold;">{{vehiculoSeleccionado?.patente}}</span></p>
+            </div>
+            <input type="button" value="Vehiculos" class="btn btn-success p-0 px-1 m-0" (click)="openModal()" [disabled]="disButton" />
+          </div>
+          <div class="item-v">
+            <p>Modelo: </p><p><span >{{vehiculoSeleccionado?.modelo}}</span></p>
+          </div>
+          <div class="item-v">
+            <p>Marca: </p><p><span >{{vehiculoSeleccionado?.marca}}</span></p>
+          </div>
+          <div class="item-v">
+            <p>Tipo: </p><p><span >{{vehiculoSeleccionado?.tipoVehiculo}}</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Ciudad desde</label
+        >
+        <div class="col-8">
+          <select class="form-select shadow-none" aria-label="Default select example" formControlName="idCiudadDesde">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option  *ngFor="let o of ciudades" [value]="o.idCiudad">{{o.nombreCiudad}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Ciudad hasta</label
+        >
+        <div class="col-8">
+          <select class="form-select shadow-none" aria-label="Default select example" formControlName="idCiudadHasta">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option  *ngFor="let o of ciudades" [value]="o.idCiudad">{{o.nombreCiudad}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-5 row">
+        <label for="inputPassword" class="col-4 col-form-label text-end"
+          >Fecha salida</label
+        >
+        <div class="col-8">
+          <input type="date" class="form-control" min={{minDate}} max={{maxDate}} formControlName="fechaSalida"   /><!--   -->
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div *ngIf="spinner" class="d-flex justify-content-center">
+          <div class="spinner-border text-danger mt-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div *ngIf="!spinner" class="d-flex justify-content-center">
+          <input
+            type="button"
+            class=" btn btn-danger w-25 shadow-none me-2"
+            value="Cancelar"
+            (click)="cancelar()"
+          />
+          <input
+            type="submit"
+            class=" btn btn-primary w-25 shadow-none ms-2"
+            value="Enviar"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+<app-modal-select-vehiculo #modal (selectVehiculoEvent)="recieveVehiculo($event)"></app-modal-select-vehiculo>

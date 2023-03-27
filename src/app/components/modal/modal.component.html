@@ -1,0 +1,89 @@
+<ng-template #modalVehiculoForm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-vehiculo-form #vehiculoForm [vehiculo]="vehiculo"  [spinner]="spinner" (agregarEvent)="receiveAgregar($event)" (cancelarEvent)="closeModal()"></app-vehiculo-form>
+    </div>
+</ng-template>
+
+<ng-template #modalDatosVehiculo let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-datos-vehiculo [vehiculo]="vehiculo" (eliminarEvent)="eliminarVehiculo()" (cancelarEvent)="closeModal()"></app-datos-vehiculo>
+    </div>
+</ng-template>
+
+<ng-template #modalAsignarViaje let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-viaje-form [viaje]="viaje" (asignarViajeEvent)="receiveAsignar($event)" (cancelarEvent)="closeModal()"></app-viaje-form>
+    </div>
+</ng-template>
+
+<ng-template #modalDatosViaje let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-datos-viaje [viaje]="viaje" (eliminarEvent)="eliminarViaje()" (cancelarEvent)="closeModal()"></app-datos-viaje>
+    </div>
+</ng-template>
+
+<ng-template #modalAdvertenciaViaje let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="text-center">
+            <img [src]="icon" alt="Icon Weather" />
+        </div>
+        <h4 class="text-center h4">Atención</h4>
+        <p class="text-center">El pronóstico para el día <span class="fw-bold">{{viajeFecha}}</span> indica: <span class="fw-bold">{{pronostico}}</span>.</p>
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-danger" (click)="eliminarViaje()">Cancelar Viaje</button>
+            <button class="btn btn-warning" (click)="reproViaje()">Reprogramar Viaje</button>
+            <button class="btn btn-primary" (click)="guargarViaje()">Guardar Viaje</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #modalCiudadForm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-ciudad-form [ciudad]="ciudad"  [spinner]="spinner" (agregarEvent)="agregaCiudad($event)" (cancelarEvent)="closeModal()"></app-ciudad-form>
+    </div>
+</ng-template>
+
+<ng-template #modalDatosCiudad let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-datos-ciudad [ciudad]="ciudad" (eliminarEvent)="eliminarCiudad()" (cancelarEvent)="closeModal()"></app-datos-ciudad>
+    </div>
+</ng-template>
+
+<ng-template #modalAgregarTipo let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-tipo-vehiculo-form [tipoVehiculo]="tipoVehiculo" (agregarEvent)="agregarTipo($event)" (cancelarEvent)="closeModal()"></app-tipo-vehiculo-form>
+    </div>
+</ng-template>
+
+<ng-template #modalDatosTipo let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{titulo}}</h4>
+    </div>
+    <div class="modal-body">
+        <app-datos-tipo-vehiculo [tipo]="tipoVehiculo" (eliminarEvent)="eliminarTipo()" (cancelarEvent)="closeModal()"></app-datos-tipo-vehiculo>
+    </div>
+</ng-template>

@@ -1,0 +1,27 @@
+<table class="table mb-4">
+    <tbody>
+        <tr>
+            <td>Id Ciudad</td>
+            <th>{{ciudad.idCiudad}}</th>
+        </tr>
+        <tr>
+            <td>Nombre ciudad</td>
+            <th>{{ciudad.nombreCiudad}}</th>
+        </tr>
+        <tr>
+            <td>País</td>
+            <th>{{ciudad.pais}}</th>
+        </tr>
+    </tbody>
+</table>
+<div class="row mt-5">
+    <div *ngIf="spinner" class="d-flex justify-content-center">
+        <div class="spinner-border text-danger mt-1" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div *ngIf="!spinner" class="d-flex justify-content-center">
+        <button class="btn btn-secondary w-25 shadow-none me-2" (click)="cancelar()">Cancelar</button>
+        <button class=" btn btn-danger w-25 shadow-none ms-2" (click)="eliminarCiudad()">Eliminar</button>
+    </div>
+</div>

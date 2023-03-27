@@ -1,0 +1,31 @@
+<div class="my-4">
+  <p>Filtros</p>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between" style="width: 30%">
+      <p class="my-auto">Tipo Vehículo</p>
+      <div style="width: 68%">
+        <app-select-tipo-vehiculo
+          (selectEvent)="recieveSelectTipo($event)"
+        ></app-select-tipo-vehiculo>
+      </div>
+    </div>
+    <div class="d-flex" style="width: 30%">
+      <p class="my-auto" style="width: 20%">Destino</p>
+      <div style="width: 68%">
+        <app-select-ciudades
+          (selectEvent)="recieveSelectCiudad($event)"
+        ></app-select-ciudades>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end" style="width: 30%">
+        <p class="my-auto" style="width: 16%">Fecha</p>
+        <div style="width: 68%">
+          <input
+            type="date"
+            class="form form-control"
+            (change)="recieveSelectedDate($event)"
+          />
+        </div>
+    </div>
+  </div>
+</div>

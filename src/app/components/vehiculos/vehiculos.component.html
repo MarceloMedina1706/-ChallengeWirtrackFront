@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center mt-4">
+  <div class="w-75">
+    <button class="btn btn-primary mb-4" (click)="abrirModal()">
+      Agregar Vehículo
+    </button>
+
+    <div class="mb-5">
+      <table class="table table-bordered">
+        <thead class="table-primary">
+          <tr>
+            <th>Id Vehículo</th>
+            <th>Tipo Vehículo</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Patente</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehiculo of vehiculos">
+            <td>{{ vehiculo.idVehiculo }}</td>
+            <td>{{ vehiculo.tipoVehiculo }}</td>
+            <td>{{ vehiculo.marca }}</td>
+            <td>{{ vehiculo.modelo }}</td>
+            <td>{{ vehiculo.patente }}</td>
+            <td class="text-center">
+              <button
+                class="btn btn-warning"
+                (click)="abrirModalEditar(vehiculo.idVehiculo)"
+              >
+                Editar
+              </button>
+            </td>
+            <td class="text-center">
+              <button
+                class="btn btn-danger"
+                (click)="abrirModalEliminar(vehiculo.idVehiculo)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  #modal
+  (agregarEvent)="receiveAgregar($event)"
+  (eliminarEvent)="receiveEliminar($event)"
+></app-modal>
+
+<!-- <app-vehiculo-form [vehiculo]="dummyVehiculo" (agregarEvent)="receiveAgregar($event)"></app-vehiculo-form> -->

@@ -1,0 +1,4 @@
+<select class="form-select shadow-none" aria-label="Default select example" (change)="onSelectCiudad($event)">
+    <option value="" selected>Todos</option>
+    <option  *ngFor="let o of ciudades" [value]="o.idCiudad">{{o.nombreCiudad}}</option>
+</select>

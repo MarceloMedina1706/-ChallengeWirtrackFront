@@ -1,0 +1,17 @@
+p{
+    margin: 0;
+    padding: 5px;
+}
+
+.item-v{
+    display: flex;
+}
+
+.item-v p:first-child{
+    width: 70px;
+    text-align: end;
+}
+
+.item-v span{
+    font-weight: bold;
+}

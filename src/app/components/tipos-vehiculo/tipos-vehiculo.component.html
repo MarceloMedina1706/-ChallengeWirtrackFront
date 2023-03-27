@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center mt-4">
+    <div class="w-75">
+        <button class="btn btn-primary mb-4" (click)="abrirModal()">
+            Agregar tipo vehículo
+        </button>
+        <div class="mb-5">
+            <table class="table table-bordered">
+              <thead class="table-primary">
+                <tr>
+                  <th>Id Tipo Vehículo</th>
+                  <th>Descripción</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tipo of tiposVehiculo">
+                  <td>{{ tipo.idTipoVehiculo }}</td>
+                  <td>{{ tipo.descripcion }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-warning w-50"
+                      (click)="abrirModalEditar(tipo)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-danger w-50"
+                      (click)="abrirModalEliminar(tipo)"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>
+
+<app-modal
+  #modal
+  (agregaTipoEvent) = "recieveTipo($event)"
+  (eliminarTipoEvent) = "recieveEliminar($event)"
+></app-modal>
