@@ -49,8 +49,8 @@ export class ViajeFormComponent implements OnInit {
     });
 
     
-    this.minDate = this.getMinMaxDate(1);
-    this.maxDate = this.getMinMaxDate(6);
+    this.minDate = this.getMinMaxDate(0);
+    this.maxDate = this.getMinMaxDate(5);
 
   }
 
@@ -85,7 +85,7 @@ export class ViajeFormComponent implements OnInit {
       
     }else{
       this.disButton = false;
-      this.defaultDate = this.getMinMaxDate(1);;
+      this.defaultDate = this.getMinMaxDate(0);;
       
     }
     
